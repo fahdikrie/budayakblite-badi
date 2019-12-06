@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<style>
+    input[type=text], select {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    input[type=submit] {
+        width: 50%;
+        background-color: #2d2d2d2d;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: black;
+    }
+    
+    /* .form {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border-radius: 5px;
+        background-color: whitesmoke;
+        padding: 20px;
+    } */
+</style>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h3>Statistik Budaya</h3>
+        <p>Pilih kategori statistik yang ingin anda lihat</p>
+        <br>
+        <form action="" method="POST">
+            <select name="metode pencarian" id="">
+                <option value="nama">Nama Budaya</option>
+                <option value="tipe">Tipe Budaya</option>
+                <option value="provinsi">Asal Provinsi Budaya</option>
+            </select>
+            <input type="submit" value="Tampilkan Statistik">
+        </form> 
+
+        <br>
+
+        <div class="table-responsive">
+            {% if length != 0 %}
+                {% if length is defined and length != cariState %}
+                    <p>Statistik data berdasarkan {% print nama %} budaya</p>
+                    <br>
+                    <table border="2px" class="table mx-auto">
+                        <tr> 
+                            <th>{% print nama %}</th>
+                            <th>Jumlah</th>
+                        </tr>
+                        {% for k,v in cariState.items() %}
+                        <tr>
+                            <td>{{ k }}</td>
+                            <td>{{ v }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% elif length is defined and length == cariState  %}
+                    <p>BudayaKB memiliki total {% print cariState %} data Budaya</p>
+                {% endif %}
+            {% else %}
+                <p>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk menambahkan budaya</p>
+            {% endif %}
+        </div>
+        <br>
+    </div>
+
+{% endblock content %}

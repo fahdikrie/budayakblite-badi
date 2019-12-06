@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<style>
+    input[type=text], select {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    input[type=submit] {
+        width: 50%;
+        background-color: #2d2d2d2d;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: black;
+    }
+    
+    /* .form {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border-radius: 5px;
+        background-color: whitesmoke;
+        padding: 20px;
+    } */
+</style>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h3>Tambah Budaya</h3>
+        <p>Masukkan data budaya yang ingin ditambahkan kedalam item</p>
+        <br>
+        <form action="" method="POST">
+            <input type="text" name="nama" placeholder="Nama budaya..." required> <br>
+            <input type="text" name="tipe" placeholder="Tipe budaya..." required> <br>
+            <input type="text" name="provinsi" placeholder="Provinsi..." required> <br>
+            <input type="text" name="url" placeholder="URL budaya..." required> <br>
+            <input type="submit" value="Tambah Data">
+        </form> 
+        <br>
+        {% if not warning %}
+            {% if tambahState is defined %}
+                {% if tambahState %}
+                <p>Data "{%print nama%}" telah berhasil ditambahkan!</p>
+                {% else %}
+                <p>Data "{%print nama%}" sudah ada! masuk ke laman <a href="/ubahBudaya">Ubah Budaya</a> jika anda ingin mengubah data</p>
+                {% endif %}    
+            {% endif %}
+        {% else %}
+        <p>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk menambahkan budaya</p>
+        {% endif %}
+    </div>
+    <br>
+{% endblock content %}
+
+

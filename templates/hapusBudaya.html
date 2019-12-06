@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<style>
+        input[type=text], select {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        input[type=submit] {
+            width: 50%;
+            background-color: #2d2d2d2d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+            background-color: black;
+        }
+        
+        /* .form {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            border-radius: 5px;
+            background-color: whitesmoke;
+            padding: 20px;
+        } */
+    </style>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h3>Hapus Budaya</h3>
+        <p>Masukkan nama budaya yang ingin dihapus</p>
+        <br>
+        <form action="" method="POST">
+            <input type="text" name="nama" placeholder="Nama budaya..." required> <br>
+            <input type="submit" value="Hapus Budaya">
+        </form> 
+        
+        {% if not warning %}
+            {% if hapusState is defined %}
+                {% if hapusState %}
+                <p>Data "{%print nama%}" telah berhasil dihapus!</p>
+                {% else %}
+                <p>Data "{%print nama%}" tidak ditemukan! masuk ke <a href="/tambahBudaya">Tambah Budaya</a> Budaya jika anda ingin menambah data</p>
+                {% endif %}    
+            {% endif %}
+        {% else %}
+        <p>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk menghapus budaya</p>
+        {% endif %}
+    </div>
+
+{% endblock content %}
+
+
+

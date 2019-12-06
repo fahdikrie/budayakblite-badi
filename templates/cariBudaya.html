@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<style>
+    input[type=text], select {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    input[type=submit] {
+        width: 50%;
+        background-color: #2d2d2d2d;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: black;
+    }
+    
+    /* .form {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border-radius: 5px;
+        background-color: whitesmoke;
+        padding: 20px;
+    } */
+</style>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h3>Cari Budaya</h3>
+        <p>Masukkan data budaya yang ingin dicari</p>
+        <br>
+        <div class="form">
+            <form action="" method="POST">
+                <select name="metode pencarian" id="">
+                    <option value="nama">Nama Budaya</option>
+                    <option value="tipe">Tipe Budaya</option>
+                    <option value="provinsi">Asal Provinsi Budaya</option>
+                </select>
+                <input type="text" name="nama" id="">
+                <input type="submit" value="Cari Budaya">
+            </form>             
+        </div>
+
+        <br>
+
+        <div class="table-responsive">
+            {% if length is defined %}
+                {% if length != 0 %}
+                    <table border="2px" class="table mx-auto">
+                        <tr>
+                            <th>Nama</th>
+                            <th>Tipe</th>
+                            <th>Provinsi</th>
+                            <th>URL</th>
+                        </tr>
+                        {% for i in cariState %}
+                        <tr>
+                            <td>{{ i.nama }}</td>
+                            <td>{{ i.tipe }}</td>
+                            <td>{{ i.prov }}</td>
+                            <td>{{ i.url }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                {% else %}
+                    <p>Maaf, data "{% print nama %}" yang anda cari tidak dapat ditemukan!</p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <br>
+    </div>
+
+{% endblock content %}

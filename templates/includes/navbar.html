@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>BudayaKB Lite</title>
+</head>
+
+<style>
+body {
+    background-color: white;
+}
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    left:100%;
+    margin-top:-6px;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}
+
+#landingpage {
+    color: black;
+    text-decoration: none;
+}
+
+#landingpage:hover {
+    color: black;
+}
+</style>
+
+<body>
+    <div class="">
+        <div class="text-center p-3">
+            <a href="/" id="landingpage">
+                <h1 class="">BudayaKB Lite v2.0</h1>
+                <h4>Sistem Manajemen Knowledge Based Budaya Indonesia</h4>
+            </a>
+            <hr>
+    
+            <nav class="navbar navbar-expand-md navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav nav-fill w-100">
+                        <li class="nav-item active mx-4">
+                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        
+                        <li class="nav-item active mx-4">
+                            <a class="nav-link" href="/imporBudaya">Impor Budaya <span class="sr-only">(current)</span></a>
+                        </li>
+            
+                        <li class="nav-item active dropdown mx-4">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sunting Budaya
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/tambahBudaya">Tambah Budaya</a></li>
+                            <li><a class="dropdown-item" href="/ubahBudaya">Ubah Budaya</a></li>
+                            <li><a class="dropdown-item" href="/hapusBudaya">Hapus Budaya</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item active mx-4">
+                            <a class="nav-link" href="/cariBudaya">Cari Budaya <span class="sr-only">(current)</span></a>
+                        </li>
+                        
+                        <li class="nav-item active mx-4">
+                            <a class="nav-link" href="/statsBudaya">Statistik Budaya <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <hr>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js"></script>
+
+</html>

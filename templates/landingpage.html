@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BudayaKB Lite</title>
+</head>
+<style>
+body {
+    background: url("/static/backgroundlayer1.jpg") no-repeat;
+    background-size: cover;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container {
+    margin-top: 25vh;
+    margin-left: 3vw;
+}
+h1 {
+    font-size: 3vmax;
+    text-shadow: 2px 2px #2d2d2d2d;
+}
+h2 {
+    font-size: 1.5vmax;
+    font-style: italic;
+    text-shadow: 1px 1px #2d2d2d2d;
+}
+.button {
+    width: 20%;
+    background-color: #2d2d2d2d;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: black;
+}
+
+@media only screen and (max-width: 730px) {
+  body {
+    background: url("/static/backgroundlayer_mobile2.jpg") no-repeat center top;
+    background-size: cover;
+  }
+}
+</style>
+<body>
+    <div class="container">
+        <h1>BudayaKB Lite v2.0</h1>
+        <h2>Sistem Manajemen Knowledge Based Budaya Indonesia</h2>
+        <a href="/home"><button class="button">Mulai</button></a>
+    </div>
+</body>
+</html>
