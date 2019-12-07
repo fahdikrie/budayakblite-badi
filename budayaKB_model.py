@@ -69,7 +69,7 @@ class BudayaCollection(object):
 		with open(fileName) as csv_file:
 			csv_reader = csv.reader(csv_file, delimiter=',')
 			for line in csv_reader:
-				if len(line) == 4 and line[0] != "":
+				if len(line) == 4:
 					budItem = BudayaItem(line[0].strip(), line[1].strip(), line[2].strip(), line[3].strip())
 					if line[0] not in self.koleksi:
 						self.koleksi[line[0]] = budItem
@@ -147,7 +147,7 @@ class BudayaCollection(object):
 		return 0 otherwise, new data is not processed
 		"""
 
-		if aName.strip() not in self.koleksi:
+		if aName not in self.koleksi:
 			newBudayaItem = BudayaItem(aName.strip(), aTipe.strip(), aProv.strip(), anURL.strip())
 			self.koleksi[aName] = newBudayaItem
 			return 1
@@ -163,7 +163,7 @@ class BudayaCollection(object):
 		return 0 if the data does not exist
 		"""
 
-		if aName.strip() in self.koleksi:
+		if aName in self.koleksi:
 			self.koleksi.pop(aName.strip())
 			return 1
 		else:
@@ -176,9 +176,9 @@ class BudayaCollection(object):
 		return 1 if the data tobe updated is in the collection and the update has been done
 		return 0 if the old data with the same key (name) does not exist
 		"""
-		if aName.strip() in self.koleksi:
+		if aName in self.koleksi:
 			newBudayaItem = BudayaItem(aName.strip(), aTipe.strip(), aProv.strip(), anURL.strip())
-			self.koleksi[aName.strip()] = newBudayaItem
+			self.koleksi[aName] = newBudayaItem
 			return 1
 
 		else:
