@@ -147,7 +147,7 @@ class BudayaCollection(object):
 		return 0 otherwise, new data is not processed
 		"""
 
-		if aName not in self.koleksi:
+		if aName.strip() not in self.koleksi:
 			newBudayaItem = BudayaItem(aName.strip(), aTipe.strip(), aProv.strip(), anURL.strip())
 			self.koleksi[aName] = newBudayaItem
 			return 1
@@ -163,7 +163,7 @@ class BudayaCollection(object):
 		return 0 if the data does not exist
 		"""
 
-		if aName in self.koleksi:
+		if aName.strip() in self.koleksi:
 			self.koleksi.pop(aName.strip())
 			return 1
 		else:
@@ -176,7 +176,7 @@ class BudayaCollection(object):
 		return 1 if the data tobe updated is in the collection and the update has been done
 		return 0 if the old data with the same key (name) does not exist
 		"""
-		if aName in self.koleksi:
+		if aName.strip() in self.koleksi:
 			newBudayaItem = BudayaItem(aName.strip(), aTipe.strip(), aProv.strip(), anURL.strip())
 			self.koleksi[aName] = newBudayaItem
 			return 1
