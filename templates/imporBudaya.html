@@ -39,7 +39,7 @@
 </form>
 
 {% if not warning %}
-	{% if result is defined and result > 0: %}
+	{% if result is defined and result >= 0 %}
 	<p>{% print result %} data budaya telah terimpor dari file "{% print fname %}"</p>
 	{% endif %}
 {% else %}
