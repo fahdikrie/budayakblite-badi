@@ -23,11 +23,13 @@ databasefilename = ""
 budayaData = BudayaCollection()
 
 
-#merender tampilan default(index.html)
+# Bagian ini merender tampilan landingpage
 @app.route('/')
 def landingpage():
 	return render_template("landingpage.html")
 
+# Bagian ini merender tampilan home (index.html)
+# - berisi mengenai informasi dan deskripsi singkat mengenai program BudayaKB Lite v2.0
 @app.route('/home')
 def index():
 	return render_template("index.html")
@@ -56,6 +58,10 @@ def importData():
 			warning = 0
 			return render_template("imporBudaya.html", result=result_impor, fname=f.filename, warning=warning)
 
+# Bagian ini adalah implementasi fitur Tambah Budaya, yaitu:
+# - merender tampilan saat menu Tambah Budaya diklik	
+# - meminta user untuk memasukkan isian form mengenai data budaya yang ingin ditambahkan
+# - menampilkan notifikasi bahwa data telah berhasil ditambahkan ke database 	
 @app.route('/tambahBudaya', methods=['GET','POST'])
 def tambahBudaya():
 	if request.method == "GET":
@@ -79,6 +85,10 @@ def tambahBudaya():
 			warning = 1
 		return render_template("tambahBudaya.html", tambahState=tambahState, nama=nama, warning=warning)	
 
+# Bagian ini adalah implementasi fitur Ubah Budaya, yaitu:
+# - merender tampilan saat menu Ubah Budaya diklik	
+# - meminta user untuk memasukkan isian form mengenai data budaya yang ingin diubah
+# - menampilkan notifikasi bahwa data telah berhasil diubah 
 @app.route('/ubahBudaya', methods=['GET','POST'])
 def ubahBudaya():
 	if request.method == "GET":
@@ -102,6 +112,10 @@ def ubahBudaya():
 			warning = 1
 		return render_template("ubahBudaya.html", ubahState=ubahState, nama=nama, warning=warning)
 
+# Bagian ini adalah implementasi fitur Hapus Budaya, yaitu:
+# - merender tampilan saat menu Hapus Budaya diklik	
+# - meminta user untuk memasukkan nama budaya yang ingin dihapus
+# - menampilkan notifikasi bahwa data telah berhasil dihapus 
 @app.route('/hapusBudaya', methods=['GET','POST'])
 def hapusBudaya():
 	if request.method == "GET":
@@ -122,6 +136,11 @@ def hapusBudaya():
 			warning = 1
 		return render_template("hapusBudaya.html", hapusState=hapusState, nama=nama, warning=warning)
 
+# Bagian ini adalah implementasi fitur Cari Budaya, yaitu:
+# - merender tampilan saat menu Cari Budaya diklik	
+# - meminta user untuk memasukkan nama budaya yang ingin ditampilkan
+# - terdapat fitur tambahan yakni memunculkan semua budaya dengan memasukkan input kosong
+# - menampilkan data yang ingin ditampilkan dalam penyajian tabel
 @app.route('/cariBudaya', methods=['GET','POST'])
 def cariBudaya():
 	if request.method == "GET":
@@ -141,14 +160,12 @@ def cariBudaya():
 			cariState = budayaData.cariSemua()
 
 		length = len(cariState)
-
-		# try:
-		# 	budayaData.exportToCSV(databasefilename) #setiap perubahan data langsung disimpan ke file
-		# 	warning = 0
-		# except FileNotFoundError:
-		# 	warning = 1
 		return render_template("cariBudaya.html",length=length, cariState=cariState, nama=nama)
 
+# Bagian ini adalah implementasi fitur Statistik Budaya, yaitu:
+# - merender tampilan saat menu Statistik Budaya diklik	
+# - meminta user untuk memilih jenis statistik yang ingin ditampilkan
+# - menampilkan data statistik yang ingin ditampilkan dalam penyajian tabel
 @app.route('/statsBudaya', methods=['GET','POST'])
 def statsBudaya():
 	if request.method == "GET":
@@ -169,12 +186,6 @@ def statsBudaya():
 			cariState = budayaData.statByProv()
 			length = len(cariState)
 			nama = "Provinsi"
-
-		# try:
-		# 	budayaData.exportToCSV(databasefilename) #setiap perubahan data langsung disimpan ke file
-		# 	warning = 0
-		# except FileNotFoundError:
-		# 	warning = 1
 		return render_template("statsBudaya.html",length=length, cariState=cariState, nama=nama)
 
 # run main app
